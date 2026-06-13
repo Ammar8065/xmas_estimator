@@ -1,0 +1,14 @@
+# Backend (inference-only) runtime deps. Training happens on Colab (see ml/train).
+fastapi
+uvicorn[standard]
+python-multipart
+pillow-heif
+# ML inference + vectorization (CPU)
+torch
+segmentation-models-pytorch
+opencv-python-headless
+scikit-image
+sknw
+shapely
+numpy
+pillow
