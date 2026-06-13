@@ -4,8 +4,8 @@
 import * as ort from 'onnxruntime-web'
 import { preprocess, softmaxCrop, type Pre } from './preprocess'
 
-// Vite bundles the ort wasm runtime as a hashed asset (offline-friendly; no CDN).
-// Single-threaded fallback when the page isn't cross-origin isolated; WebGPU used when available.
+// Point ort to the WASM files served from the public dir (avoids Vite hashed-path issues).
+ort.env.wasm.wasmPaths = '/'
 if (!self.crossOriginIsolated) ort.env.wasm.numThreads = 1
 
 export interface Meta {
