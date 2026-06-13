@@ -42,10 +42,9 @@ yarn-error.log
 *~
 .DS_Store
 
-# Large model files (use Git LFS or store separately)
+# Large model files
 *.pt
 *.pth
-*.onnx
 *.bin
 
 # Build artifacts
