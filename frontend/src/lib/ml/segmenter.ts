@@ -4,8 +4,8 @@
 import * as ort from 'onnxruntime-web'
 import { preprocess, softmaxCrop, type Pre } from './preprocess'
 
-// Point ort to the WASM files served from the public dir (avoids Vite hashed-path issues).
-ort.env.wasm.wasmPaths = '/'
+// Load WASM runtime from CDN — avoids having to bundle/copy large .wasm files locally.
+ort.env.wasm.wasmPaths = 'https://cdn.jsdelivr.net/npm/onnxruntime-web@1.26.0/dist/'
 if (!self.crossOriginIsolated) ort.env.wasm.numThreads = 1
 
 export interface Meta {
