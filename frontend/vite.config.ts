@@ -1,10 +1,36 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
+import { copyFileSync, mkdirSync } from 'fs'
+import { resolve } from 'path'
 
 export default defineConfig({
+  build: {
+    assetsInlineLimit: 0,
+    rollupOptions: {
+      output: {
+        assetFileNames: (assetInfo) => {
+          if (assetInfo.name && assetInfo.name.endsWith('.onnx')) {
+            return 'model/[name][extname]'
+          }
+          return 'assets/[name]-[hash][extname]'
+        },
+      },
+    },
+  },
   plugins: [
     react(),
+    {
+      name: 'copy-model',
+      apply: 'build',
+      enforce: 'post',
+      generateBundle() {
+        const src = resolve(__dirname, 'public/model/unet.int8.onnx')
+        const dst = resolve(__dirname, 'dist/model/unet.int8.onnx')
+        mkdirSync(resolve(__dirname, 'dist/model'), { recursive: true })
+        copyFileSync(src, dst)
+      },
+    },
     VitePWA({
       registerType: 'autoUpdate',
       includeAssets: ['icons/icon-192.png', 'icons/icon-512.png'],
