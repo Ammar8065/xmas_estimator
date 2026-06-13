@@ -1,0 +1,11 @@
+# Treat ML model and binary assets as binary (no line-ending conversion)
+*.onnx binary
+*.pt binary
+*.pth binary
+*.bin binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.wasm binary
