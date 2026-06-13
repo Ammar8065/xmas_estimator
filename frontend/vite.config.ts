@@ -25,10 +25,16 @@ export default defineConfig({
       apply: 'build',
       enforce: 'post',
       generateBundle() {
-        const src = resolve(__dirname, 'public/model/unet.int8.onnx')
-        const dst = resolve(__dirname, 'dist/model/unet.int8.onnx')
-        mkdirSync(resolve(__dirname, 'dist/model'), { recursive: true })
-        copyFileSync(src, dst)
+        const modelDir = resolve(__dirname, 'dist/model')
+        mkdirSync(modelDir, { recursive: true })
+        copyFileSync(
+          resolve(__dirname, 'public/model/unet.int8.onnx'),
+          resolve(modelDir, 'unet.int8.onnx')
+        )
+        copyFileSync(
+          resolve(__dirname, 'public/model/meta.json'),
+          resolve(modelDir, 'meta.json')
+        )
       },
     },
     VitePWA({
