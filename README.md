@@ -336,18 +336,11 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ---
 
-## 👥 Team
-
-Built with ❤️ for Colorado's Christmas light installers.
-
----
-
 ## 📞 Support
 
 For issues and questions:
 - Open an issue on GitHub
 - Check the BUILD_SPEC.md for detailed technical context
-- Review CLAUDE.md for development context
 
 ---
 
